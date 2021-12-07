@@ -26,7 +26,7 @@ The Google Analytics Sample [Ecommerce dataset](https://www.blog.google/products
 
 ### Task 1. Explore ecommerce data
 
-The querys used on this task can be found [here]() and the results can be found [here]() as .CSV files. 
+The querys used on this task can be found [here](https://github.com/lilacostaro/Predicting_Visitor_Purchases_with_a_Classification_Model_with_BigQuery_ML/blob/master/querys_sql/task1.sql) and the results can be found [here](https://github.com/lilacostaro/Predicting_Visitor_Purchases_with_a_Classification_Model_with_BigQuery_ML/tree/master/resultados/task_1) as .CSV files. 
 
 ### Task 2. Select features and create your training dataset
 
@@ -35,7 +35,7 @@ For this task, the lab choose to use the following columns as features:
 - totals.bounces (whether the visitor left the website immediately)
 - totals.timeOnSite (how long the visitor was on our website)
 
-The query used to create the training dataset can be found [here]() and the dataset generated can be found [here]().
+The query used to create the training dataset can be found [here](https://github.com/lilacostaro/Predicting_Visitor_Purchases_with_a_Classification_Model_with_BigQuery_ML/blob/master/querys_sql/task2.sql) and the dataset generated can be found [here](https://github.com/lilacostaro/Predicting_Visitor_Purchases_with_a_Classification_Model_with_BigQuery_ML/tree/master/resultados/task_2).
 
 After a first look out of the top 10 time_on_site, only 1 customer is a recurrent buyer, which isn't very promising. So we can't expect that the model using only this two features to be much precise. But it's a good start.
 
@@ -45,7 +45,7 @@ The dataset **eccomerce** was created using the instructions provided by the tut
 
 ### Task 4. Select a BigQuery ML model type and specify options
 
-The query used to create the model training can be found [here](), note that is a modified version of the query used on **task 2**. At the end of the process, we can see the following message: Consulta finalizada (tempo decorrido: 2 min 15 s, bytes processados: 41,8 MB (ML)), which shows that ML querys take more time to process then normal querys.
+The query used to create the model training can be found [here](https://github.com/lilacostaro/Predicting_Visitor_Purchases_with_a_Classification_Model_with_BigQuery_ML/blob/master/querys_sql/task4.sql), note that is a modified version of the query used on **task 2**. At the end of the process, we can see the following message: Consulta finalizada (tempo decorrido: 2 min 15 s, bytes processados: 41,8 MB (ML)), which shows that ML querys take more time to process then normal querys.
 
 More details about the execution can be found on the following images
 
@@ -72,7 +72,7 @@ This relationship is visualized with a ROC (Receiver Operating Characteristic) c
 
 In BigQuery ML, roc_auc is simply a queryable field when evaluating your trained ML model.
 
-Once that training is complete, we evaluated how well the model performed by running [this]() query using ML.EVALUATE, the result can be found [here]() and at this image
+Once that training is complete, we evaluated how well the model performed by running [this](https://github.com/lilacostaro/Predicting_Visitor_Purchases_with_a_Classification_Model_with_BigQuery_ML/blob/master/querys_sql/task5.sql) query using ML.EVALUATE, the result can be found [here](https://github.com/lilacostaro/Predicting_Visitor_Purchases_with_a_Classification_Model_with_BigQuery_ML/tree/master/resultados/task_5) and at this image
 
 ![Alt text](assets\img9.png)
 
@@ -82,7 +82,7 @@ As we can see, after evaluating your model you get a **roc_auc** of 0.72, which 
 
 At this task we will be adding some new features and creating a second machine learning model called classification_model_2, once there are many more features in the dataset that may help the model better understand the relationship between a visitor's first session and the likelihood that they will purchase on a subsequent visit.
 
-The new features that we will use are going to awnser the following questions
+The new features that we will use are going to answer the following questions
 
 - How far the visitor got in the checkout process on their first visit
 
@@ -92,7 +92,7 @@ The new features that we will use are going to awnser the following questions
 
 - Geographic information (country)
 
-The second model was create by running [this]() query;
+The second model was create by running the first query in [this](https://github.com/lilacostaro/Predicting_Visitor_Purchases_with_a_Classification_Model_with_BigQuery_ML/blob/master/querys_sql/task6.sql) file;
 
    - **Note**: You are still training on the same first 9 months of data, even with this new model. It's important to have the same training dataset so you can be certain a better model output is attributable to better input features and not new or different training data.
 
@@ -100,9 +100,9 @@ A key new feature that was added to the training dataset query is the maximum ch
 
 As an aside, the web analytics dataset has nested and repeated fields like ARRAYS which need to be broken apart into separate rows in your dataset. This is accomplished by using the UNNEST() function, which you can see in the above query.
 
-Now that we have a new model we can use the second query in [here]() to evaluate the quality of the model 
+Now that we have a new model we can use the second query in [here](https://github.com/lilacostaro/Predicting_Visitor_Purchases_with_a_Classification_Model_with_BigQuery_ML/blob/master/querys_sql/task6.sql) to evaluate the quality of the model 
 
-You can see the result of the evaluation [here]() or in the image below
+You can see the result of the evaluation [here](https://github.com/lilacostaro/Predicting_Visitor_Purchases_with_a_Classification_Model_with_BigQuery_ML/tree/master/resultados/task_6) or in the image below
 
 ![Alt text](assets\img16.png)
 
@@ -112,7 +112,7 @@ Now that you have a trained model, time to make some predictions.
 
 ### Task 7. Predict which new visitors will come back and purchase
 
-The query used to make the predictions can be found [here]() and a .CSV file with a part of the results can be found [here]().
+The query used to make the predictions can be found [here](https://github.com/lilacostaro/Predicting_Visitor_Purchases_with_a_Classification_Model_with_BigQuery_ML/blob/master/querys_sql/task7.sql) and a .CSV file with a part of the results can be found [here](https://github.com/lilacostaro/Predicting_Visitor_Purchases_with_a_Classification_Model_with_BigQuery_ML/tree/master/resultados/task_7).
 
 The predictions are made in the last 1 month (out of 12 months) of the dataset.
 
@@ -157,6 +157,6 @@ You may need to look at the documentation linked above to see the exact syntax. 
 
 The output now shows a classification model that can better predict the probability that a first-time visitor to the Google Merchandise Store will make a purchase in a later visit. By comparing the result above with the previous model shown in Task 7, you can see the confidence the model has in its predictions is more accurate when compared to the logistic_regression model type.
 
-The querys with the solution to the **Challange** can be found [here](), and the .csv file with part of the result can be found [here]().
+The querys with the solution to the **Challange** can be found [here](https://github.com/lilacostaro/Predicting_Visitor_Purchases_with_a_Classification_Model_with_BigQuery_ML/blob/master/querys_sql/extra.sql), and the .csv file with part of the result can be found [here](https://github.com/lilacostaro/Predicting_Visitor_Purchases_with_a_Classification_Model_with_BigQuery_ML/tree/master/resultados/extra).
 
 OBS.: Great part of the readme and all the querys ware taken from the Qwiklabs instructions.
